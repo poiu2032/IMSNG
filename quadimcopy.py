@@ -1,6 +1,3 @@
-#for quadrant image seperation into 4 pieces
-# 2015/06/30 Changsu Choi
-
 from astropy.io import fits
 from pyraf import iraf
 import os
@@ -35,6 +32,7 @@ for files in filelist :
 	
 	for q in range(len(quadname)) :
 		imcopy(files,regions[q],quadname[q])
+
 
 
 
