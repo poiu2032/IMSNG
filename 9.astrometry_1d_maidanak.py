@@ -1,4 +1,4 @@
-# astrometry.net script making program for ONE target
+# astrometry.net script making program for ONE day
 # Revised for maidanak data which has no RA, DEC in header by G. Lim
 
 from astropy.io import ascii
