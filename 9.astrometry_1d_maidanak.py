@@ -1,4 +1,5 @@
-#astrometry.net script making program for ONE target
+# astrometry.net script making program for ONE target
+# Revised for maidanak data which has no RA, DEC in header by G. Lim
 
 from astropy.io import ascii
 from astropy.io import fits
