@@ -18,10 +18,10 @@ echo ${line}
 			echo $countR
 			if [ $countR -gt 0 ] ; then
 				cp -rp $ref_DIR/${line}R*.fits $work_DIR/${line}/R/ref.fits
-#				python $code_DIR/remap.py 
-#				python $code_DIR/hotpantsrun.py 
+				python $code_DIR/remap.py 
+				python $code_DIR/hotpantsrun.py 
 #			ds9 -zscale hd*.fits ref.fits -single -zoom to fit -frame match wcs &	
-#				cp -rp ~/sextractor/default* ./
+				cp -rp ~/sextractor/default* ./
 				python $code_DIR/detect_loao.py
 
 				cp -rp ./jpg/hd*R*jpg $jpg_DIR/${line}/R
@@ -46,10 +46,10 @@ echo ${line}
 			echo $countB
 			if [ $countB -gt 0 ] ; then
 				cp -rp $ref_DIR/${line}B*.fits $work_DIR/${line}/B/ref.fits
-#				python $code_DIR/remap.py 
-#				python $code_DIR/hotpantsrun.py 
-	#		ds9 -zscale hd*.fits ref.fits -single -zoom to fit -frame match wcs &
-#                                cp -rp ~/sextractor/default* ./
+				python $code_DIR/remap.py 
+				python $code_DIR/hotpantsrun.py 
+		#	ds9 -zscale hd*.fits ref.fits -single -zoom to fit -frame match wcs &
+                                cp -rp ~/sextractor/default* ./
                                 python $code_DIR/detect_loao.py
 
 				cp -rp ./jpg/hd*B*.jpg $jpg_DIR/${line}/B

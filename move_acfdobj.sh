@@ -18,6 +18,7 @@ do
 	if [ $countR -gt 0  ] ; then 
 		mkdir $WORK_DIR/${linea}
 		mkdir $WORK_DIR/${linea}/R
+		mv $FILE_DIR/cfdobj*${linea}*R*.fits $WORK_DIR/${linea}/R/
 		mv $FILE_DIR/acfdobj*${linea}*R*.fits $WORK_DIR/${linea}/R/
 		rm countR.list
 	else
@@ -34,6 +35,7 @@ do
                 mkdir $WORK_DIR/${linea}
 		mkdir $WORK_DIR/${linea}/B
 
+                mv $FILE_DIR/cfdobj*${linea}*B*.fits $WORK_DIR/${linea}/B/ 
                 mv $FILE_DIR/acfdobj*${linea}*B*.fits $WORK_DIR/${linea}/B/ 
 		rm countB.list
         else

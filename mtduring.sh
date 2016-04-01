@@ -13,9 +13,10 @@ do
 
 
 
-## Move ac*.fits and hd*.fits to folder 'all'
 echo ${linea}
 	if [ -d ${FILE_DIR}/${linea}/R ] ; then 
+		mkdir $WORK_DIR/${linea}
+		mkdir $WORK_DIR/${linea}/R
 		mv $FILE_DIR/${linea}/R/cfdobj*R*fits $WORK_DIR/${linea}/R/
                 mv $FILE_DIR/${linea}/R/acfdobj*R*fits $WORK_DIR/${linea}/R/
 		rm -rf $FILE_DIR/${linea}/R
@@ -25,6 +26,7 @@ echo ${linea}
 
 
         if [ -d ${FILE_DIR}/${linea}/B ] ; then
+		mkdir $WORK_DIR/${linea}/B
                 mv $FILE_DIR/${linea}/B/cfdobj*B*fits $WORK_DIR/${linea}/B/
                 mv $FILE_DIR/${linea}/B/acfdobj*B*fits $WORK_DIR/${linea}/B/
 		rm -rf $FILE_DIR/${linea}/B
