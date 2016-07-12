@@ -7,7 +7,9 @@ while read linea
 do
 work_DIR=/home/sylee/Desktop/LOAO/red/astrometry/${linea}
 mkdir /home/sylee/Desktop/LOAO/red/astrometry/jpgcheck/${linea}
+mkdir /home/sylee/Desktop/LOAO/red/astrometry/fitscheck/${linea}
 jpg_DIR=/home/sylee/Desktop/LOAO/red/astrometry/jpgcheck/${linea}
+fits_DIR=/home/sylee/Desktop/LOAO/red/astrometry/fitscheck/${linea}
 
 while read line
 do
@@ -21,6 +23,7 @@ echo ${line}
 			echo $countR
 			if [ $countR -gt 0 ] ; then
 				cp -rp $ref_DIR/${line}R*.fits $work_DIR/${line}/R/ref.fits
+                                cp -rp $ref_DIR/${line}R*.fits $fits_DIR/hdreacfdobj.${line}.R.fits
 				python $code_DIR/remap.py 
 				python $code_DIR/hotpantsrun.py 
 	#			ds9 -zscale hd*.fits ref.fits -single -zoom to fit -frame match wcs &	
@@ -28,6 +31,7 @@ echo ${line}
 				python $code_DIR/detect_loao.py
 
 				cp -rp ./jpg/hd*.jpg $jpg_DIR
+				cp -rp hd*.fits $fits_DIR
 				cp -rp ./jpg/ref.jpg $jpg_DIR/hdreacfdobj.${line}.${linea}.ref.jpg
 				rm -rf reacfdobj*.fits obj.list default* 
 
@@ -49,6 +53,7 @@ echo ${line}
 			echo $countB
 			if [ $countB -gt 0 ] ; then
 				cp -rp $ref_DIR/${line}B*.fits $work_DIR/${line}/B/ref.fits
+				cp -rp $ref_DIR/${line}B*.fits $fits_DIR/hdreacfdobj.${line}.B.fits
 				python $code_DIR/remap.py 
 				python $code_DIR/hotpantsrun.py 
 	#		ds9 -zscale hd*.fits ref.fits -single -zoom to fit -frame match wcs &
@@ -56,6 +61,7 @@ echo ${line}
                                 python $code_DIR/detect_loao.py
 
 				cp -rp ./jpg/hd*.jpg $jpg_DIR
+				cp -rp hd*.fits $fits_DIR
 				cp -rp ./jpg/ref.jpg $jpg_DIR/hdreacfdobj.${line}.${linea}.ref.jpg
 
 				rm -rf reacfdobj*.fits obj.list default* 

@@ -25,6 +25,7 @@ def fnamechange(fitsfile) :
 	filname=str(hdr['FILTER'])
 	if filname == 'B102' : filname = 'B'
 	elif filname == 'R104' : filname = 'R'
+	elif filname == 'V103' : filname = 'V'
 
 	if 'EXP_TIME' in hdr : exptime=str(int(hdr['EXP_TIME']))
 	else : exptime='Na'
@@ -40,7 +41,7 @@ def fnamechange(fitsfile) :
 	os.system(mvcom)
 
 
-os.system("ls *bj*.fits > obj.list")
+os.system("ls fdobj*.fits > obj.list")
 infile='obj.list'
 files=np.genfromtxt(infile,usecols=(0),dtype=str)
 lists=list(files)

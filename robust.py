@@ -13,10 +13,8 @@ been incorporated into the AstroIDL User's Library.  Function included are:
     to determine its quality
   * linefit - outlier resistant fit of a line to data
   * polyfit - outlier resistant fit of a polynomial to data
-
 For the fitting routines, the coefficients are returned in the same order as
 numpy.polyfit, i.e., with the coefficient of the highest power listed first.
-
 For additional information about the original IDL routines, see:
   http://idlastro.gsfc.nasa.gov/contents.html#C17
 """
@@ -86,7 +84,7 @@ def mean(inputData, Cut=3.0):
 		:func:`lsl.misc.mathutil.robustmean`
 	"""
 	
-	data = inputData.ravel()
+	data = numpy.ravel(inputData)
 	if type(data).__name__ == "MaskedArray":
 		data = data.compressed()
 		
@@ -556,4 +554,3 @@ def polyfit(inputX, inputY, order, iterMax=25):
 		else:
 			diff = diff2
 	return cc
-

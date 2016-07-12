@@ -48,22 +48,22 @@ echo ${line}
 
 
 ##remove empty folder
-	ls $FILE_DIR/${linea}/R/*cfdobj*.fits > countR.list
-	countR=$(cat $FILE_DIR/${linea}/R/countR.list | wc -l)
-	if [ $countR -gt 0 ] ; then echo "acfdobj?!"
-	else	rm -rf $FILE_DIR/${linea}/R
-	fi
+#	ls $FILE_DIR/${linea}/R/*cfdobj*.fits > countR.list
+#	countR=$(cat $FILE_DIR/${linea}/R/countR.list | wc -l)
+#	if [ $countR -gt 0 ] ; then echo "acfdobj?!"
+#	else	rm -rf $FILE_DIR/${linea}/R
+#	fi
 
-	ls $FILE_DIR/${linea}/B/*cfdobj*.fits > countB.list
-	countB=$(cat $FILE_DIR/${linea}/B/countB.list | wc -l)
-        if [ $countB -gt 0 ] ; then echo "acfdobj?!"
-        else    rm -rf $FILE_DIR/${linea}/B
-        fi
+#	ls $FILE_DIR/${linea}/B/*cfdobj*.fits > countB.list
+#	countB=$(cat $FILE_DIR/${linea}/B/countB.list | wc -l)
+#       if [ $countB -gt 0 ] ; then echo "acfdobj?!"
+#      else    rm -rf $FILE_DIR/${linea}/B
+#       fi
 
-	if [ -d $FILE_DIR/${linea}/R ] ; then echo "R exist"
-	elif [ -d $FILE_DIR/${linea}/B ] ; then echo "B exist"
-	else rm -rf $FILE_DIR/${linea}
-	fi
+#	if [ -d $FILE_DIR/${linea}/R ] ; then echo "R exist"
+#	elif [ -d $FILE_DIR/${linea}/B ] ; then echo "B exist"
+#	else rm -rf $FILE_DIR/${linea}
+#	fi
 
 done < /home/sylee/Desktop/LOAO/red/move.list
 exit 0 

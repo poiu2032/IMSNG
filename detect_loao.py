@@ -135,7 +135,7 @@ def jpgreg(image) :
 	fig.set_theme('pretty')               #'publication'or 'pretty'
 	fig.show_colorscale(cmap='gray',stretch='linear',pmin=1,pmax=99.5)
 	fig.set_title(objname)
-	radius = 0.002
+	radius = 0.003
 	for r in range(len(ra)) :
 		fig.show_circles(ra[r], dec[r], radius=0.005,color='yellow')
 	

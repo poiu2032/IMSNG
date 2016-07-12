@@ -41,11 +41,24 @@ echo ${linea}
           echo "nothing"
         fi
 
+        cd $FILE_DIR/${linea}/V/
+        ls hd*V*.fits > counthdV.list
+        hdV=$(cat counthdV.list | wc -l)
+        if [ $hdV -gt 0 ] ; then
+                mv $FILE_DIR/${linea}/V/h?reacfdobj*V*fits $WORK_DIR/${linea}/V/
+                mv $FILE_DIR/${linea}/V/acfdobj*V*fits $WORK_DIR/${linea}/V/
+                mv /home/sylee/Desktop/LOAO/red/astrometry/jpgcheck/${line}/*${linea}*V*.jpg $WORK_DIR/jpg/${linea}/V/
+                rm -rf $FILE_DIR/${linea}/V
+        else
+          echo "nothing"
+        fi
+
 
 ##remove empty folder
 	if [ -d $FILE_DIR/${linea}/R -a -d $FILE_DIR/${linea}/B ] ; then echo "R,B exist!"
 	elif [ -d $FILE_DIR/${linea}/R ] ; then echo "R exist!"
 	elif [ -d $FILE_DIR/${linea}/B ] ; then echo "B exist!"
+	elif [ -d $FILE_DIR/${linea}/V ] ; then echo "V exist!"
 	else	rm -rf $FILE_DIR/${linea}
 	fi
 

@@ -16,7 +16,7 @@ from astropy.io.votable import parse
 from astropy.time import Time
 import robust
 import matplotlib.pyplot as plt
-
+import math
 
 #refcat='/data0/itelescope_data/t52/NGC2442/com/nomad.cat'
 refcat=sys.argv[1]
@@ -83,7 +83,6 @@ for i in range(len(inim)) :
 	os.system(presecom)
 	os.system(psfexcom)
 	os.system('cp psfex.xml '+inimage[:-5]+'.xml')	
-	psfexxml(inimage[:-5]+'.xml')
 	fwhm.append(psfexxml(inimage[:-5]+'.xml'))
 
 	sexcom='/usr/bin/sex -c phot.sex '+inimage+' -CATALOG_NAME '+inimage[:-5]+'.cat -PARAMETERS_NAME  phot.param -psf_name '+inimage[:-5]+'.psf -seeing_fwhm '+str(psfexxml(inimage[:-5]+'.xml'))+' -DETECT_THRESH '+detecthred+' -ANALYSIS_THRESH '+analthred+' -PHOT_APERTURES '+apersize 

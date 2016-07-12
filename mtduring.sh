@@ -26,11 +26,22 @@ echo ${linea}
 
 
         if [ -d ${FILE_DIR}/${linea}/B ] ; then
+		mkdir $WORK_DIR/${linea}
 		mkdir $WORK_DIR/${linea}/B
                 mv $FILE_DIR/${linea}/B/cfdobj*B*fits $WORK_DIR/${linea}/B/
                 mv $FILE_DIR/${linea}/B/acfdobj*B*fits $WORK_DIR/${linea}/B/
 		rm -rf $FILE_DIR/${linea}/B
 	else
+          echo "nothing"
+        fi
+
+        if [ -d ${FILE_DIR}/${linea}/V ] ; then
+		mkdir $WORK_DIR/${linea}
+                mkdir $WORK_DIR/${linea}/V
+                mv $FILE_DIR/${linea}/V/cfdobj*V*fits $WORK_DIR/${linea}/V/
+                mv $FILE_DIR/${linea}/V/acfdobj*V*fits $WORK_DIR/${linea}/V/
+                rm -rf $FILE_DIR/${linea}/V
+        else
           echo "nothing"
         fi
 
@@ -48,8 +59,16 @@ echo ${linea}
         else    rm -rf $FILE_DIR/${linea}/B
         fi
 
+        ls $FILE_DIR/${linea}/V/*obj*.fits > countV.list
+        countV=$(cat $FILE_DIR/${linea}/V/countV.list | wc -l)
+        if [ $countV -gt 0 ] ; then echo "acfdobj?!"
+        else    rm -rf $FILE_DIR/${linea}/V
+        fi
+
+
 	if [ -d $FILE_DIR/${linea}/R ] ; then echo "R exist"
 	elif [ -d $FILE_DIR/${linea}/B ] ; then echo "B exist"
+	elif [ -d $FILE_DIR/${linea}/V ] ; then echo "V exist"
 	else rm -rf $FILE_DIR/${linea}
 	fi
 

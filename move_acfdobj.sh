@@ -26,7 +26,6 @@ do
 	fi
 
 
-	cd $FILE_DIR
         ls acfdobj*${linea}*B*.fits > countB.list
         countB=$(cat countB.list | wc -l)
 	echo $countB
@@ -42,6 +41,20 @@ do
           echo "false"
         fi
 
+        ls acfdobj*${linea}*V*.fits > countV.list
+        countV=$(cat countV.list | wc -l)
+        echo $countV
+        if [ $countV -gt 0 ] ; then
+
+                mkdir $WORK_DIR/${linea}
+                mkdir $WORK_DIR/${linea}/V
+
+                mv $FILE_DIR/cfdobj*${linea}*V*.fits $WORK_DIR/${linea}/V/
+                mv $FILE_DIR/acfdobj*${linea}*V*.fits $WORK_DIR/${linea}/V/
+                rm countV.list
+        else
+          echo "false"
+        fi
 
 
 done < /home/sylee/Desktop/LOAO/red/move.list
