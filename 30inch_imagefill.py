@@ -30,8 +30,6 @@ def fill_im(im):
 	datasec=hdr['datasec']
 	ccdsec=hdr['ccdsec']
 
-	hdr['naxis1']=long(2080)
-        hdr['naxis2']=long(2048)
         hdr['biassec']='[2057:2072,2:2047]'
         hdr['trimsec']='[2:2047,2:2047]'
         hdr['datasec']='[1:2048,1:2048]' # it must be changed, other parameter is irrelevant but just for mtching with full frame image's header
@@ -48,7 +46,7 @@ def fill_im(im):
 	print 'data dtype',data.dtype
 
 	print ccdsec
-	nd=np.full((2048,2048),5000,dtype=data.dtype)
+	nd=np.full((2048,2080),5000,dtype=data.dtype)
 
 	for y in range(ccdsecx1,ccdsecx2):
 		for x in range(ccdsecy1,ccdsecy2+1) : 
